@@ -2,12 +2,35 @@ on:
   workflow_call:
 
 jobs:
-  deploy:
-    strategy:
-      matrix:
-        environment: [dev, staging, prod]
-    name: ${{ matrix.environment }}
+  dev:
+    name: Dev
     uses: ./.github/workflows/deploy.yaml
     with:
-      environment: ${{ matrix.environment }}
+      environment: dev
     secrets: inherit
+
+  staging:
+    needs: dev
+    name: Staging
+    uses: ./.github/workflows/deploy.yaml
+    with:
+      environment: dev
+    secrets: inherit
+
+  prod:
+    needs: staging
+    name: Prod
+    uses: ./.github/workflows/deploy.yaml
+    with:
+      environment: dev
+    secrets: inherit
+
+#  deploy:
+#    strategy:
+#      matrix:
+#        environment: [dev, staging, prod]
+#    name: ${{ matrix.environment }}
+#    uses: ./.github/workflows/deploy.yaml
+#    with:
+#      environment: ${{ matrix.environment }}
+#    secrets: inherit
