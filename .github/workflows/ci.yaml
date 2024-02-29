@@ -10,3 +10,8 @@ jobs:
   build:
     uses: ./.github/workflows/build.yaml
     secrets: inherit
+
+  deploy:
+    needs: build
+    uses: ./.github/workflows/deploy.yaml
+    secrets: inherit
