@@ -13,7 +13,7 @@ jobs:
     name: Staging
     uses: ./.github/workflows/deploy.yaml
     with:
-      environment: dev
+      environment: staging
     secrets: inherit
 
   prod:
@@ -21,7 +21,7 @@ jobs:
     name: Prod
     uses: ./.github/workflows/deploy.yaml
     with:
-      environment: dev
+      environment: prod
     secrets: inherit
 
 #  deploy:
