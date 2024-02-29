@@ -1,0 +1,11 @@
+on:
+  workflow_call:
+
+jobs:
+  deploy:
+    strategy:
+      matrix:
+        environment: [dev, staging, prod]
+    name: ${{ matrix.environment }}
+    uses: ./.github/workflows/deploy.yaml
+    secrets: inherit

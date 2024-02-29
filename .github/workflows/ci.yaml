@@ -10,10 +10,12 @@ jobs:
   build:
     name: Build
     uses: ./.github/workflows/build.yaml
+    with:
+      test: true
     secrets: inherit
 
-  deploy:
-    name: Deploy
+  release:
+    name: Release
     needs: build
-    uses: ./.github/workflows/deploy-train.yaml
+    uses: ./.github/workflows/release.yaml
     secrets: inherit

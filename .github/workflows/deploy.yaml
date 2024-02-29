@@ -1,0 +1,23 @@
+on:
+  workflow_call:
+
+jobs:
+  predeploy:
+    name: "Predeploy / Dev"
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Predeploy"
+
+  deploy:
+    name: "Deploy / Dev"
+    needs: predeploy
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Deploy"
+
+  postdeploy:
+    name: "Postdeploy / Dev"
+    needs: postdeploy
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Postdeploy"
