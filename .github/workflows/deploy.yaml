@@ -20,4 +20,6 @@ jobs:
       cancel-in-progress: false
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
       - run: echo "${{ matrix.phase }} to ${{ inputs.environment }}"
