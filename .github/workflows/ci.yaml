@@ -1,4 +1,4 @@
-name: CI
+name: ci
 
 on:
   push:
@@ -9,13 +9,13 @@ on:
 jobs:
   build:
     name: Build
-    uses: ./.github/workflows/common/build.yaml
+    uses: ./.github/workflows/build.yaml
     secrets: inherit
 
   release:
     name: Release
     needs: build
-    uses: ./.github/workflows/common/release.yaml
+    uses: ./.github/workflows/release.yaml
     with:
       phases: '["predeploy", "deploy", "postdeploy"]'
     secrets: inherit
