@@ -1,8 +1,0 @@
-name: Build
-description: Build
-
-runs:
-  using: "composite"
-  steps:
-    - shell: bash
-      run: "echo 'Building'"
