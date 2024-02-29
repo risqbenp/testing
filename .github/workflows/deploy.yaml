@@ -7,7 +7,7 @@ on:
 jobs:
   predeploy:
     name: "Predeploy to ${{ inputs.environment }}"
-    environment: ${{ inputs.environment }}-pre
+#    environment: ${{ inputs.environment }}-pre
     runs-on: ubuntu-latest
     steps:
       - run: echo "Predeploy"
@@ -22,7 +22,7 @@ jobs:
 
   postdeploy:
     name: "Postdeploy to ${{ inputs.environment }}"
-    environment: ${{ inputs.environment }}-post
+#    environment: ${{ inputs.environment }}-post
     needs: deploy
     runs-on: ubuntu-latest
     steps:
