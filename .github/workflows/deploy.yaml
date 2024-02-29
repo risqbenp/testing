@@ -1,22 +1,25 @@
 on:
   workflow_call:
+    inputs:
+      environment:
+        type: string
 
 jobs:
   predeploy:
-    name: "Predeploy / Dev"
+    name: "Predeploy"
     runs-on: ubuntu-latest
     steps:
       - run: echo "Predeploy"
 
   deploy:
-    name: "Deploy / Dev"
+    name: "Deploy"
     needs: predeploy
     runs-on: ubuntu-latest
     steps:
       - run: echo "Deploy"
 
   postdeploy:
-    name: "Postdeploy / Dev"
+    name: "Postdeploy"
     needs: deploy
     runs-on: ubuntu-latest
     steps:
