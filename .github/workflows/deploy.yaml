@@ -15,7 +15,7 @@ jobs:
       fail-fast: true
       max-parallel: 1
     name: ${{ matrix.phase }} to ${{ inputs.environment }}
-    environment: ${{ inputs.environment }}-${{ matrix.phase }}
+    environment: ${{ inputs.environment }}/${{ matrix.phase }}
     runs-on: ubuntu-latest
     steps:
       - run: echo "${{ matrix.phase }}"
