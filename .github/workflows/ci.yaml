@@ -16,4 +16,6 @@ jobs:
     name: Release
     needs: build
     uses: ./.github/workflows/release.yaml
+    with:
+      phases: ${{ toJson(["predeploy", "deploy", "postdeploy"]) }}
     secrets: inherit

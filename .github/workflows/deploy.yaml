@@ -1,6 +1,8 @@
 on:
   workflow_call:
     inputs:
+      phases:
+        type: string
       environment:
         type: string
 
@@ -9,7 +11,7 @@ jobs:
 
     strategy:
       matrix:
-        phase: [plan, apply, test, destroy]
+        phase: ${{ fromJson(inputs.phases) }}
       fail-fast: true
       max-parallel: 1
     name: ${{ matrix.phase }} to ${{ inputs.environment }}

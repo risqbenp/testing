@@ -1,5 +1,8 @@
 on:
   workflow_call:
+    inputs:
+      phases:
+        type: string
 
 jobs:
   dev:
@@ -7,6 +10,7 @@ jobs:
     uses: ./.github/workflows/deploy.yaml
     with:
       environment: dev
+      phases: ${{inputs.phases}}
     secrets: inherit
 
   staging:
@@ -14,6 +18,7 @@ jobs:
     uses: ./.github/workflows/deploy.yaml
     with:
       environment: staging
+      phases: ${{inputs.phases}}
     secrets: inherit
 
   prod:
@@ -22,14 +27,5 @@ jobs:
     uses: ./.github/workflows/deploy.yaml
     with:
       environment: prod
+      phases: ${{inputs.phases}}
     secrets: inherit
-
-#  deploy:
-#    strategy:
-#      matrix:
-#        environment: [dev, staging, prod]
-#    name: ${{ matrix.environment }}
-#    uses: ./.github/workflows/deploy.yaml
-#    with:
-#      environment: ${{ matrix.environment }}
-#    secrets: inherit
