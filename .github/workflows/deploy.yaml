@@ -6,14 +6,14 @@ on:
 
 jobs:
   predeploy:
-    name: "Predeploy"
+    name: "Predeploy to ${{ inputs.environment }}"
     environment: ${{ inputs.environment }}-pre
     runs-on: ubuntu-latest
     steps:
       - run: echo "Predeploy"
 
   deploy:
-    name: "Deploy"
+    name: "Deploy to ${{ inputs.environment }}"
     environment: ${{ inputs.environment }}
     needs: predeploy
     runs-on: ubuntu-latest
@@ -21,7 +21,7 @@ jobs:
       - run: echo "Deploy"
 
   postdeploy:
-    name: "Postdeploy"
+    name: "Postdeploy to ${{ inputs.environment }}"
     environment: ${{ inputs.environment }}-post
     needs: deploy
     runs-on: ubuntu-latest
