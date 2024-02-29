@@ -8,4 +8,6 @@ jobs:
         environment: [dev, staging, prod]
     name: ${{ matrix.environment }}
     uses: ./.github/workflows/deploy.yaml
+    with:
+      environment: ${{ matrix.environment }}
     secrets: inherit
