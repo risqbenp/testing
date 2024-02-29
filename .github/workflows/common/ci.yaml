@@ -1,21 +1,21 @@
-name: ci
-
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
-jobs:
-  build:
-    name: Build
-    uses: ./.github/workflows/build.yaml
-    secrets: inherit
-
-  release:
-    name: Release
-    needs: build
-    uses: ./.github/workflows/release.yaml
-    with:
-      phases: '["predeploy", "deploy", "postdeploy"]'
-    secrets: inherit
+#name: ci
+#
+#on:
+#  push:
+#    branches: [ main ]
+#  pull_request:
+#    branches: [ main ]
+#
+#jobs:
+#  build:
+#    name: Build
+#    uses: ./.github/workflows/build.yaml
+#    secrets: inherit
+#
+#  release:
+#    name: Release
+#    needs: build
+#    uses: ./.github/workflows/release.yaml
+#    with:
+#      phases: '["predeploy", "deploy", "postdeploy"]'
+#    secrets: inherit
