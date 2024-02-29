@@ -4,5 +4,5 @@ description: Build
 runs:
   using: "composite"
   steps:
-    - name: Checkout
-      uses: actions/checkout@v4
+    - shell: bash
+      run: "echo 'Building'"
