@@ -5,25 +5,14 @@ on:
         type: string
 
 jobs:
-  predeploy:
-    name: "Predeploy to ${{ inputs.environment }}"
-    environment: ${{ inputs.environment }}-pre
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Predeploy"
-
   deploy:
-    name: "Deploy to ${{ inputs.environment }}"
-    environment: ${{ inputs.environment }}
-    needs: predeploy
+    strategy:
+      matrix:
+        phase: [predeploy, deploy, postdeploy]
+      fail-fast: true
+      max-parallel: 1
+    name: ${{ matrix.phase }} to ${{ inputs.environment }}
+    environment: ${{ inputs.environment }}-${{ matrix.phase }}
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Deploy"
-
-  postdeploy:
-    name: "Postdeploy to ${{ inputs.environment }}"
-    environment: ${{ inputs.environment }}-post
-    needs: deploy
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Postdeploy"
+      - run: echo "${{ matrix.phase }}"
