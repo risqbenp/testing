@@ -10,7 +10,6 @@ jobs:
     secrets: inherit
 
   staging:
-    needs: dev
     name: Staging
     uses: ./.github/workflows/deploy.yaml
     with:
