@@ -17,7 +17,7 @@ jobs:
 
   postdeploy:
     name: "Postdeploy / Dev"
-    needs: postdeploy
+    needs: deploy
     runs-on: ubuntu-latest
     steps:
       - run: echo "Postdeploy"
