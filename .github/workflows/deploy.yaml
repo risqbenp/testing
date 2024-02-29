@@ -8,7 +8,6 @@ on:
 
 jobs:
   deploy:
-
     strategy:
       matrix:
         phase: ${{ fromJson(inputs.phases) }}
@@ -16,6 +15,9 @@ jobs:
       max-parallel: 1
     name: ${{ matrix.phase }} to ${{ inputs.environment }}
     environment: ${{ inputs.environment }}/${{ matrix.phase }}
+    concurrency:
+      group: ${{ inputs.environment }}
+      cancel-in-progress: false
     runs-on: ubuntu-latest
     steps:
-      - run: echo "${{ matrix.phase }}"
+      - run: echo "${{ matrix.phase }} to ${{ inputs.environment }}"
