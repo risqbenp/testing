@@ -5,38 +5,38 @@ on:
         type: string
 
 jobs:
-#  dev:
-#    name: Dev
-#    uses: ./.github/workflows/deploy.yaml
-#    with:
-#      environment: dev
-#      phases: ${{inputs.phases}}
-#    secrets: inherit
-#
-#  staging:
-#    name: Staging
-#    uses: ./.github/workflows/deploy.yaml
-#    with:
-#      environment: staging
-#      phases: ${{inputs.phases}}
-#    secrets: inherit
-#
-#  prod:
-#    needs: staging
-#    name: Prod
-#    uses: ./.github/workflows/deploy.yaml
-#    with:
-#      environment: prod
-#      phases: ${{inputs.phases}}
-#    secrets: inherit
-
-  envs:
-    strategy:
-      matrix:
-        environment: [dev, staging, prod]
-    name: ${{ matrix.environment }}
+  dev:
+    name: Dev
     uses: ./.github/workflows/deploy.yaml
     with:
-      environment: ${{ matrix.environment }}
+      environment: dev
       phases: ${{inputs.phases}}
     secrets: inherit
+
+  staging:
+    name: Staging
+    uses: ./.github/workflows/deploy.yaml
+    with:
+      environment: staging
+      phases: ${{inputs.phases}}
+    secrets: inherit
+
+  prod:
+    needs: staging
+    name: Prod
+    uses: ./.github/workflows/deploy.yaml
+    with:
+      environment: prod
+      phases: ${{inputs.phases}}
+    secrets: inherit
+
+#  envs:
+#    strategy:
+#      matrix:
+#        environment: [dev, staging, prod]
+#    name: ${{ matrix.environment }}
+#    uses: ./.github/workflows/deploy.yaml
+#    with:
+#      environment: ${{ matrix.environment }}
+#      phases: ${{inputs.phases}}
+#    secrets: inherit
