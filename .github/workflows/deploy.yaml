@@ -6,9 +6,10 @@ on:
 
 jobs:
   deploy:
+
     strategy:
       matrix:
-        phase: [predeploy, deploy, postdeploy]
+        phase: [plan, apply, test, destroy]
       fail-fast: true
       max-parallel: 1
     name: ${{ matrix.phase }} to ${{ inputs.environment }}
