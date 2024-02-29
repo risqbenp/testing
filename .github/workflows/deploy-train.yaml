@@ -1,10 +1,9 @@
-name: Build
-
 on:
   workflow_call:
 
 jobs:
-  build:
+  deploy:
+    name: Dev
     runs-on: ubuntu-latest
     steps:
       - run: echo "Deploying"

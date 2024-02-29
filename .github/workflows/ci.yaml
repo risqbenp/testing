@@ -8,10 +8,12 @@ on:
 
 jobs:
   build:
+    name: Build
     uses: ./.github/workflows/build.yaml
     secrets: inherit
 
   deploy:
+    name: Deploy
     needs: build
-    uses: ./.github/workflows/deploy.yaml
+    uses: ./.github/workflows/deploy-train.yaml
     secrets: inherit
