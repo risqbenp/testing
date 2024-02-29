@@ -12,24 +12,8 @@ jobs:
     uses: ./.github/workflows/build.yaml
     secrets: inherit
 
-  dev:
-    name: Dev
-    uses: ./.github/workflows/deploy.yaml
-    with:
-      environment: dev
-    secrets: inherit
-
-  staging:
-    name: Staging
-    uses: ./.github/workflows/deploy.yaml
-    with:
-      environment: staging
-    secrets: inherit
-
-  prod:
-    needs: staging
-    name: Prod
-    uses: ./.github/workflows/deploy.yaml
-    with:
-      environment: prod
+  release:
+    name: Release
+    needs: build
+    uses: ./.github/workflows/release.yaml
     secrets: inherit
